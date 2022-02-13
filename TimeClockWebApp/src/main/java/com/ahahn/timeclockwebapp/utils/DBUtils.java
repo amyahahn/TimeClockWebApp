@@ -15,7 +15,7 @@ public class DBUtils {
 	public static Employee findUser(Connection conn, //
 			String userName, String password) throws SQLException {
 
-		String sql = "Select a.User_Name, a.Password, a.Gender from EMPLOYEE a " //
+		String sql = "Select a.User_Name, a.Password, a.Id from EMPLOYEE a " //
 				+ " where a.User_Name = ? and a.password= ?";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
@@ -24,11 +24,10 @@ public class DBUtils {
 		ResultSet rs = pstm.executeQuery();
 
 		if (rs.next()) {
-			String gender = rs.getString("Gender");
+			String id = rs.getString("id");
 			Employee user = new Employee();
 			user.setUserName(userName);
 			user.setPassword(password);
-			user.setGender(gender);
 			return user;
 		}
 		return null;
@@ -36,7 +35,7 @@ public class DBUtils {
 
 	public static Employee findUser(Connection conn, String userName) throws SQLException {
 
-		String sql = "Select a.User_Name, a.Password, a.Gender from EMPLOYEE a "//
+		String sql = "Select a.User_Name, a.Password from EMPLOYEE a "//
 				+ " where a.User_Name = ? ";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
@@ -46,11 +45,9 @@ public class DBUtils {
 
 		if (rs.next()) {
 			String password = rs.getString("Password");
-			String gender = rs.getString("Gender");
 			Employee user = new Employee();
 			user.setUserName(userName);
 			user.setPassword(password);
-			user.setGender(gender);
 			return user;
 		}
 		return null;
