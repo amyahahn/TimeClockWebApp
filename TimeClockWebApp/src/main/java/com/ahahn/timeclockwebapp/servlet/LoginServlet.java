@@ -87,9 +87,6 @@ public class LoginServlet extends HttpServlet {
 
 			dispatcher.forward(request, response);
 		}
-		// If no error
-		// Store user information in Session
-		// And redirect to userInfo page.
 		else {
 			HttpSession session = request.getSession();
 			MyUtils.storeLoginedUser(session, user);
@@ -103,8 +100,7 @@ public class LoginServlet extends HttpServlet {
 				MyUtils.deleteUserCookie(response);
 			}
 
-			// Redirect to userInfo page.
-			response.sendRedirect(request.getContextPath() + "/userInfo");
+			response.sendRedirect(request.getContextPath() + "/employee");
 		}
 	}
 

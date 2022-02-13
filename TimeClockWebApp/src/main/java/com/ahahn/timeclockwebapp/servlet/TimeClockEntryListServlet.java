@@ -32,7 +32,7 @@ public class TimeClockEntryListServlet extends HttpServlet {
 		String errorString = null;
 		List<TimeClockEntry> list = null;
 		try {
-			list = DBUtils.queryProduct(conn);
+			list = DBUtils.queryTimeClockEntry(conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			errorString = e.getMessage();

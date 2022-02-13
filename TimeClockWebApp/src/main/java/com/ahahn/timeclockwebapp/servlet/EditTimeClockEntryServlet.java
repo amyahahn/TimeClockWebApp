@@ -36,7 +36,7 @@ public class EditTimeClockEntryServlet extends HttpServlet {
 		String errorString = null;
 
 		try {
-			timeClockEntry = DBUtils.findProduct(conn, code);
+			timeClockEntry = DBUtils.findTimeClockEntry(conn, code);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			errorString = e.getMessage();
@@ -80,7 +80,7 @@ public class EditTimeClockEntryServlet extends HttpServlet {
 		String errorString = null;
 
 		try {
-			DBUtils.updateProduct(conn, timeClockEntry);
+			DBUtils.updateTimeClockEntry(conn, timeClockEntry);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			errorString = e.getMessage();

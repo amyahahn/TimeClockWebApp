@@ -15,7 +15,7 @@ public class DBUtils {
 	public static Employee findUser(Connection conn, //
 			String userName, String password) throws SQLException {
 
-		String sql = "Select a.User_Name, a.Password, a.Gender from USER_ACCOUNT a " //
+		String sql = "Select a.User_Name, a.Password, a.Gender from EMPLOYEE a " //
 				+ " where a.User_Name = ? and a.password= ?";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
@@ -36,7 +36,7 @@ public class DBUtils {
 
 	public static Employee findUser(Connection conn, String userName) throws SQLException {
 
-		String sql = "Select a.User_Name, a.Password, a.Gender from USER_ACCOUNT a "//
+		String sql = "Select a.User_Name, a.Password, a.Gender from EMPLOYEE a "//
 				+ " where a.User_Name = ? ";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
@@ -56,8 +56,8 @@ public class DBUtils {
 		return null;
 	}
 
-	public static List<TimeClockEntry> queryProduct(Connection conn) throws SQLException {
-		String sql = "Select a.Code, a.Name, a.Price from PRODUCT a ";
+	public static List<TimeClockEntry> queryTimeClockEntry(Connection conn) throws SQLException {
+		String sql = "Select a.Code, a.Name, a.Price from TIMECLOCKENTRY a ";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
 
@@ -76,8 +76,8 @@ public class DBUtils {
 		return list;
 	}
 
-	public static TimeClockEntry findProduct(Connection conn, String code) throws SQLException {
-		String sql = "Select a.Code, a.Name, a.Price from PRODUCT a where a.Code=?";
+	public static TimeClockEntry findTimeClockEntry(Connection conn, String code) throws SQLException {
+		String sql = "Select a.Code, a.Name, a.Price from TIMECLOCKENTRY a where a.Code=?";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
 		pstm.setString(1, code);
@@ -93,7 +93,7 @@ public class DBUtils {
 		return null;
 	}
 
-	public static void updateProduct(Connection conn, TimeClockEntry timeClockEntry) throws SQLException {
+	public static void updateTimeClockEntry(Connection conn, TimeClockEntry timeClockEntry) throws SQLException {
 		String sql = "Update TimeClockEntry set Name =?, Price=? where Code=? ";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
@@ -105,7 +105,7 @@ public class DBUtils {
 	}
 
 	public static void insertTimeClockEntry(Connection conn, TimeClockEntry timeClockEntry) throws SQLException {
-		String sql = "Insert into PRODUCT(Code, Name,Price) values (?,?,?)";
+		String sql = "Insert into TIMECLOCKENTRY(Code, Name,Price) values (?,?,?)";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
 
@@ -117,7 +117,7 @@ public class DBUtils {
 	}
 
 	public static void deleteTimeClockEntry(Connection conn, String code) throws SQLException {
-		String sql = "Delete From PRODUCT where Code= ?";
+		String sql = "Delete From TIMECLOCKENTRY where Code= ?";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
 
